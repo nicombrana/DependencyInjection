@@ -20,14 +20,14 @@ public class testPersonasHome {
 	}
 
 	@Test
-	public void testeElNombreDeUnaPersona(){
+	public void testElNombreDeUnaPersona(){
 		PersonaHome personas = cont.dameUnObjeto("home de personas");
 		Persona persona = personas.damePersona();
 		this.assertEquals(persona.getUsuario(),"nico");
 	}
 	
 	@Test
-	public void testeaQue unaPErsonaSeaPelado() {
+	public void testQueUnaPersonaSeaPelado() {
 		p = persService.dameunPelado();
 		this.assertEquals(p.nombre(),"nico");
 	}
