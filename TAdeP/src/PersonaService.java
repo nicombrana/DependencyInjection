@@ -7,6 +7,7 @@ public class PersonaService {
 		this.homeDePersona = personaHome;
 	}
 
+	// Getters & Setters
 	public void setPersona(PersonaHome personaHome){
 		this.homeDePersona = personaHome;
 	}
@@ -18,4 +19,5 @@ public class PersonaService {
 	public String nombreDeUnUsuario(){
 		return this.getPersona().damePersona().getUsuario();
 	}
+	
 }

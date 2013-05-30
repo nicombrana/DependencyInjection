@@ -6,6 +6,15 @@ public class Persona {
 	private int puerto;
 	private String esquema;
 	
+	public Persona() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Persona(String nombre){
+		this.usuario = nombre;
+	}
+
+	//Getters
 	public String getUsuario(){
 		return this.usuario;
 	}
@@ -24,13 +33,6 @@ public class Persona {
 	
 	public String getEsquema(){
 		return this.esquema;
-	}
-	public Persona() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Persona(String nombre){
-		this.usuario = nombre;
 	}
 
 }
