@@ -1,8 +1,11 @@
+package src;
 
 public class PersonaService {
 
 	private PersonaHome homeDePersona;
 	
+	public PersonaService(){
+	}	
 	public PersonaService(PersonaHome personaHome) {
 		this.homeDePersona = personaHome;
 	}
@@ -20,4 +23,7 @@ public class PersonaService {
 		return this.getPersona().damePersona().getUsuario();
 	}
 	
+	public Persona dameUnPelado(){
+		return this.homeDePersona.damePersona();
+	}
 }

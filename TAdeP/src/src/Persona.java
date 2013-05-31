@@ -1,3 +1,4 @@
+package src;
 
 public class Persona {
 	private String usuario;
