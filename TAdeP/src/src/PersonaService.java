@@ -14,7 +14,7 @@ public class PersonaService {
 	public void setPersona(PersonaHome personaHome){
 		this.homeDePersona = personaHome;
 	}
-	
+		
 	public PersonaHome getPersona(){
 		return this.homeDePersona;
 	}
@@ -23,7 +23,4 @@ public class PersonaService {
 		return this.getPersona().damePersona().getUsuario();
 	}
 	
-	public Persona dameUnPelado(){
-		return this.homeDePersona.damePersona();
-	}
 }

@@ -1,6 +1,7 @@
 package src;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class Contenedor {
@@ -9,6 +10,8 @@ public class Contenedor {
 	private Map<String,ArrayList<Object>> dictionaryObjects;
 		
 	public Contenedor() {
+		this.dictionaryObject = new TreeMap<String,Object>();
+		this.dictionaryObjects = new TreeMap<String,ArrayList<Object>>();
 	}
 	
 	public Object dameUnObjeto(String nombre){

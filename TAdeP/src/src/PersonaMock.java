@@ -7,6 +7,7 @@ public class PersonaMock {
 	private ArrayList<Persona> personas;
 	
 	public PersonaMock() {
+		this.personas = new ArrayList<Persona>();
 	}
 	
 	public void agregarPersona(Persona persona){
@@ -15,6 +16,10 @@ public class PersonaMock {
 	
 	public Persona damePersona(){
 		return this.personas.get(0);
+	}
+	
+	public Persona dameUnPelado(){
+		return this.personas.get(1);
 	}
 
 }
