@@ -11,16 +11,16 @@ public class PersonaService {
 	}
 
 	// Getters & Setters
-	public void setPersona(PersonaHome personaHome){
+	public void setPersonaHome(PersonaHome personaHome){
 		this.homeDePersona = personaHome;
 	}
 		
-	public PersonaHome getPersona(){
+	public PersonaHome getPersonaHome(){
 		return this.homeDePersona;
 	}
 	
 	public String nombreDeUnUsuario(){
-		return this.getPersona().damePersona().getUsuario();
+		return this.getPersonaHome().damePersona().getUsuario();
 	}
 	
 }
