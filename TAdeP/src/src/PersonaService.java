@@ -6,6 +6,7 @@ public class PersonaService {
 	
 	public PersonaService(){
 	}	
+	
 	public PersonaService(PersonaHome personaHome) {
 		this.homeDePersona = personaHome;
 	}
@@ -21,6 +22,11 @@ public class PersonaService {
 	
 	public String nombreDeUnUsuario(){
 		return this.getPersonaHome().damePersona().getUsuario();
+	}
+	
+	// Varios
+	public Persona buscaUnaPersonaPorNombre(String nombre){
+		return this.getPersonaHome().buscaUnaPersonaPorNombre(nombre);
 	}
 	
 }

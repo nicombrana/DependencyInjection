@@ -16,5 +16,11 @@ public class PersonaDataBaseHome implements PersonaHome {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Persona buscaUnaPersonaPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

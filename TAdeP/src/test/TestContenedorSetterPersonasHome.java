@@ -4,40 +4,39 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
-import src.Contenedor;
+import src.ContenedorSetter;
 import src.Persona;
-import src.PersonaMock;
+import src.PersonaDataBaseMock;
 import src.PersonaService;
 
-public class TestPersonasHome {
+public class TestContenedorSetterPersonasHome {
 
-	private Contenedor cont;
-	private PersonaMock persMock;
-	//private PersonaMock personas;
+	private ContenedorSetter cont;
+	private PersonaDataBaseMock persMock;
 	private PersonaService persoService;
 		
 	@Before
 	public void setUp() throws Exception {
-		cont = new Contenedor();
+		cont = new ContenedorSetter();
 		Persona pers1 = new Persona("nico");
 		Persona pers2 = new Persona("nahu");
-		persMock = new PersonaMock();
+		persMock = new PersonaDataBaseMock();
 		persMock.agregarPersona(pers1);
 		persMock.agregarPersona(pers2);
 		cont.cuandoTePidanPone("home de personas", persMock);
-		persoService = new PersonaService((PersonaMock)cont.dameUnObjeto("home de personas"));
+		PersonaDataBaseMock persoMock = (PersonaDataBaseMock) cont.dameUnObjeto("home de personas");
+		persoService = new PersonaService();
+		persoService.setPersonaHome(persoMock);
 	}
 
 	@Test
 	public void testElNombreDeUnaPersona(){
-		//personas = (PersonaMock) cont.dameUnObjeto("home de personas");
-		//Persona persona = personas.damePersona();
-		Assert.assertEquals(persoService.nombreDeUnUsuario(),"nico");//persona.getUsuario()
+		Assert.assertEquals(persoService.nombreDeUnUsuario(),"nico");
 	}
 	
 	@Test
 	public void testQueUnaPersonaSeaPelado() {
-		Persona p =((PersonaMock) persoService.getPersonaHome()).dameUnPelado();
+		Persona p =((PersonaDataBaseMock) persoService.getPersonaHome()).dameUnPelado(1);
 		Assert.assertEquals(p.getUsuario(),"nahu");
 	}
 
