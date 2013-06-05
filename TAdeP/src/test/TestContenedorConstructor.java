@@ -6,9 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import src.ContenedorConstructor;
-import src.PersonaDataBaseMock;
-import src.PersonaHome;
-import src.PersonaService;
 
 public class TestContenedorConstructor {
 	

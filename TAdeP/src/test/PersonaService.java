@@ -1,4 +1,4 @@
-package src;
+package test;
 
 public class PersonaService {
 
