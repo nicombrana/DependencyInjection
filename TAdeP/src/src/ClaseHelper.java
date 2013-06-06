@@ -8,8 +8,6 @@ public class ClaseHelper extends ContenedorHelper {
 	private Class<?> clase;
 	private ArrayList<ContenedorHelper> dependencias = new ArrayList<ContenedorHelper>();
 	
-
-	
 	public ClaseHelper(Class<?> tipo, Class<?> clase) {
 		this.setTipo(tipo);
 		this.setClase(clase);
@@ -41,7 +39,11 @@ public class ClaseHelper extends ContenedorHelper {
 	}
 	
 	//Comportamiento
-	public void agregarDependencia(ContenedorHelper dependencia){
+	public void agregarDependencia(ClaseHelper dependencia){
+		this.getDependencias().add(dependencia);
+	}
+	
+	public void agregarDependencia(ObjetoHelper dependencia){
 		this.getDependencias().add(dependencia);
 	}
 }

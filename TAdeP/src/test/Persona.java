@@ -36,4 +36,23 @@ public class Persona {
 		return this.esquema;
 	}
 
+	public void setUsuario(String nombre){
+		this.usuario = nombre;
+	}
+	
+	public void setPassword(String password){
+		this.password = password;
+	}
+	
+	public void setHost(String host){
+		this.host = host;
+	}
+	
+	public void setPuerto(int puerto){
+		this.puerto = puerto;
+	}
+	
+	public void setEsquema(String esquema){
+		this.esquema = esquema;
+	}
 }

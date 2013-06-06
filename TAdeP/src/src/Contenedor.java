@@ -46,7 +46,4 @@ public abstract class Contenedor  {
 			agregarDependencia(this.getDiccionarioObjetoHelper().get(referenciaDependencia));
 	}
 	
-//	public Object dameUnObjeto(Class<?> tipo){
-//		return 9;
-//	}
 }
