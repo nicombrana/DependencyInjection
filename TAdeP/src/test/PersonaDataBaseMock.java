@@ -47,7 +47,7 @@ public class PersonaDataBaseMock extends PersonaDataBaseHome {
 	
 	@Override
 	public String getUsuario() {
-		return usuario;
+		return this.usuario;
 	}
 
 }

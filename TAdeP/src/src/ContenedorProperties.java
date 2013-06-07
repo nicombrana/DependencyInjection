@@ -27,7 +27,7 @@ public class ContenedorProperties extends Contenedor {
 	public void seteaGenerico(Class<?> claseInyectable, Object objetoInyectable, ClaseHelper claseHelper) throws Exception {
 		Object objetoDependencia =  this.dameUnObjeto(claseHelper.getTipo());
 		
-		claseInyectable.getDeclaredField(Introspector.decapitalize(claseHelper.getTipo().getSimpleName())).setAccessible(true);
+//		claseInyectable.getDeclaredField(Introspector.decapitalize(claseHelper.getTipo().getSimpleName())).setAccessible(true);
 		claseInyectable.getDeclaredField(Introspector.decapitalize(claseHelper.getTipo().getSimpleName())).
 			set(objetoInyectable, objetoDependencia);
 	}
@@ -35,7 +35,7 @@ public class ContenedorProperties extends Contenedor {
 	public void seteaGenerico(Class<?> claseInyectable, Object objetoInyectable, ObjetoHelper objetoHelper) throws Exception {
 		Object objetoDependencia = objetoHelper.getValor();
 		
-		claseInyectable.getDeclaredField(Introspector.decapitalize(objetoHelper.getReferencia())).setAccessible(true);
+//		claseInyectable.getDeclaredField(Introspector.decapitalize(objetoHelper.getReferencia())).setAccessible(true);
 		claseInyectable.getDeclaredField(Introspector.decapitalize(objetoHelper.getReferencia())).
 			set(objetoInyectable, objetoDependencia);
 	}
