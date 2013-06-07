@@ -43,6 +43,11 @@ public class TestContenedorProperties {
 	}
 	
 	@Test
+	public void testHayObjetosHelper(){
+		Assert.assertTrue(contProperties.getDiccionarioObjetoHelper().containsKey("Usuario"));
+	}
+	
+	@Test
 	public void testContenedorObjetos() throws Exception {
 		contProperties = new ContenedorProperties();
 		contProperties.configurate(PersonaDataBaseHome.class, PersonaDataBaseHome.class);
