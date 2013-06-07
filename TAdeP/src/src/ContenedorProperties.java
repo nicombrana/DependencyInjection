@@ -1,22 +1,43 @@
 package src;
 
+import java.beans.Introspector;
+
 public class ContenedorProperties extends Contenedor {
 
 	public Object dameUnObjeto(Class<?> clase) throws Exception{
 		
-		Object objetoInyectado = this.getInstancias().get(clase).newInstance();
+		ClaseHelper inyectableHelper = (ClaseHelper) this.getDiccionarioClaseHelper().get(clase);
+		Object objetoInyectable = inyectableHelper.getClase().newInstance();
 		
-		for(Class<?> claseInyectada : this.getDependenciasClases()){
-			Object objetoAInyectar = this.instanciaClaseInyectada(claseInyectada);
-			clase.getField(claseInyectada.getSimpleName()).set(objetoInyectado, objetoAInyectar);
+		
+		for (int i = 0; i < inyectableHelper.getDependencias().size(); i++) {
+			if (this.getDiccionarioClaseHelper().containsValue(inyectableHelper.getDependencias().get(i))){
+				ClaseHelper claseHelperAux = (ClaseHelper) inyectableHelper.getDependencias().get(i);
+				this.seteaGenerico(clase, objetoInyectable, claseHelperAux);
+			} else{
+				ObjetoHelper objetoHelperAux = (ObjetoHelper) inyectableHelper.getDependencias().get(i);
+				this.seteaGenerico(clase, objetoInyectable, objetoHelperAux);
+			}
+			
 		}
 		
-		for (String referencia: this.getDependenciasObjetos()) {
-			Object objetoAInyectar = this.getValorAInyectar(referencia);
-			clase.getField(referencia).set(objetoInyectado, objetoAInyectar);
-		}
-		
-		return objetoInyectado;
+		return objetoInyectable;
 	}
-
+	
+	public void seteaGenerico(Class<?> claseInyectable, Object objetoInyectable, ClaseHelper claseHelper) throws Exception {
+		Object objetoDependencia =  this.dameUnObjeto(claseHelper.getTipo());
+		
+		claseInyectable.getDeclaredField(Introspector.decapitalize(claseHelper.getTipo().getSimpleName())).setAccessible(true);
+		claseInyectable.getDeclaredField(Introspector.decapitalize(claseHelper.getTipo().getSimpleName())).
+			set(objetoInyectable, objetoDependencia);
+	}
+	
+	public void seteaGenerico(Class<?> claseInyectable, Object objetoInyectable, ObjetoHelper objetoHelper) throws Exception {
+		Object objetoDependencia = objetoHelper.getValor();
+		
+		claseInyectable.getDeclaredField(Introspector.decapitalize(objetoHelper.getReferencia())).setAccessible(true);
+		claseInyectable.getDeclaredField(Introspector.decapitalize(objetoHelper.getReferencia())).
+			set(objetoInyectable, objetoDependencia);
+	}
+	
 }

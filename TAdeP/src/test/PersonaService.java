@@ -2,23 +2,23 @@ package test;
 
 public class PersonaService {
 
-	private PersonaHome homeDePersona;
+	public PersonaHome personaDataBaseHome;
 	
 	public PersonaService(){
 	}	
 	
 	
 	public PersonaService(PersonaHome personaHome) {
-		this.homeDePersona = personaHome;
+		this.personaDataBaseHome = personaHome;
 	}
 
 	// Getters & Setters
 	public void setPersonaHome(PersonaHome personaHome){
-		this.homeDePersona = personaHome;
+		this.personaDataBaseHome = personaHome;
 	}
 		
 	public PersonaHome getPersonaHome(){
-		return this.homeDePersona;
+		return this.personaDataBaseHome;
 	}
 	
 }

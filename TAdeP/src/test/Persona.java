@@ -1,6 +1,7 @@
 package test;
 
 public class Persona {
+	
 	private String usuario;
 	private String password;
 	private String host;

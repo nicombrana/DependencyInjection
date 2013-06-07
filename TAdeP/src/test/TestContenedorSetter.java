@@ -33,13 +33,13 @@ public class TestContenedorSetter {
 	@Test
 	public void testContenedorSetter() throws Exception {
 		PersonaService personita = (PersonaService) contSet.dameUnObjeto(PersonaService.class);
-		Assert.assertEquals(personita.getPersonaHome().getUsuario(), "Franco");
+		Assert.assertEquals("Franco", personita.getPersonaHome().getUsuario());
 	}
 	
 	@Test
 	public void testContenedorSetterTieneUnPersonaDataBaseMock() throws Exception {
 		PersonaService personaService = (PersonaService) contSet.dameUnObjeto(PersonaService.class);
-		Assert.assertEquals(personaService.getPersonaHome().getClass(), PersonaDataBaseMock.class);
+		Assert.assertEquals(PersonaDataBaseMock.class, personaService.getPersonaHome().getClass());
 	}
 	
 	@Test
@@ -58,6 +58,6 @@ public class TestContenedorSetter {
 		contSet.agregarDependencia(PersonaDataBaseHome.class,"Esquema");
 	
 		PersonaDataBaseHome persoDB = (PersonaDataBaseHome) contSet.dameUnObjeto(PersonaDataBaseHome.class);
-		Assert.assertEquals(persoDB.getUsuario(), "Fede");
+		Assert.assertEquals("Fede", persoDB.getUsuario());
 	}
 }

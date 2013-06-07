@@ -2,11 +2,11 @@ package test;
 
 public class PersonaDataBaseHome implements PersonaHome {
 
-	private String usuario;
-	private String password;
-	private String host;
-	private int puerto;
-	private String esquema;
+	public String usuario;
+	public String password;
+	public String host;
+	public int puerto;
+	public String esquema;
 	
 	public String getPassword() {
 		return password;
@@ -44,7 +44,6 @@ public class PersonaDataBaseHome implements PersonaHome {
 		this.usuario = usuario;
 	}
 	
-	@Override
 	public String getUsuario() {
 		return usuario;
 	}
