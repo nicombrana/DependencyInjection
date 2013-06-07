@@ -2,11 +2,23 @@ package test;
 
 public class PersonaDataBaseHome implements PersonaHome {
 
+
 	public String usuario;
 	public String password;
 	public String host;
 	public int puerto;
 	public String esquema;
+	
+	public PersonaDataBaseHome(String usuario, String password, String host,
+			int puerto, String esquema) {
+		super();
+		this.usuario = usuario;
+		this.password = password;
+		this.host = host;
+		this.puerto = puerto;
+		this.esquema = esquema;
+	}
+	
 	
 	public String getPassword() {
 		return password;

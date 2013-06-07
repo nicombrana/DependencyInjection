@@ -12,8 +12,9 @@ public class Persona {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Persona(String nombre){
+	public Persona(String nombre, String password){
 		this.usuario = nombre;
+		this.password = password;
 	}
 
 	//Getters

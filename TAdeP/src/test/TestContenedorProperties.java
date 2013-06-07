@@ -14,19 +14,19 @@ public class TestContenedorProperties {
 	@Before
 	public void setUp() throws Exception {
 		contProperties = new ContenedorProperties();
-		contProperties.configurate(PersonaDataBaseHome.class, PersonaDataBaseMock.class);
+		contProperties.configurate(PersonaHome.class, PersonaDataBaseMock.class);
 		contProperties.configurate(PersonaService.class, PersonaService.class);
 		contProperties.configurate("Usuario",String.class,"Franco");
 		contProperties.configurate("Password",String.class,"VamosQueFunca!");
 		contProperties.configurate("Host",String.class,"ElHost");
 		contProperties.configurate("Puerto",int.class,1234);
 		contProperties.configurate("Esquema",String.class,"Blah");
-		contProperties.agregarDependencia(PersonaService.class,PersonaDataBaseHome.class);
-		contProperties.agregarDependencia(PersonaDataBaseHome.class,"Usuario");
-		contProperties.agregarDependencia(PersonaDataBaseHome.class,"Password");
-		contProperties.agregarDependencia(PersonaDataBaseHome.class,"Host");
-		contProperties.agregarDependencia(PersonaDataBaseHome.class,"Puerto");
-		contProperties.agregarDependencia(PersonaDataBaseHome.class,"Esquema");
+		contProperties.agregarDependencia(PersonaService.class,PersonaHome.class);
+		contProperties.agregarDependencia(PersonaHome.class,"Usuario");
+		contProperties.agregarDependencia(PersonaHome.class,"Password");
+		contProperties.agregarDependencia(PersonaHome.class,"Host");
+		contProperties.agregarDependencia(PersonaHome.class,"Puerto");
+		contProperties.agregarDependencia(PersonaHome.class,"Esquema");
 		
 	}
 	

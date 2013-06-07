@@ -45,19 +45,19 @@ public class TestContenedorSetter {
 	@Test
 	public void testContenedorObjetos() throws Exception {
 		contSet = new ContenedorSetter();
-		contSet.configurate(PersonaDataBaseHome.class, PersonaDataBaseHome.class);
+		contSet.configurate(PersonaHome.class, PersonaDataBaseHome.class);
 		contSet.configurate("Usuario",String.class,"Fede");
 		contSet.configurate("Password",String.class,"AguanteEsteGrupo");
 		contSet.configurate("Host",String.class,"ElHost");
 		contSet.configurate("Puerto",int.class,1234);
 		contSet.configurate("Esquema",String.class,"Blah");
-		contSet.agregarDependencia(PersonaDataBaseHome.class,"Usuario");
-		contSet.agregarDependencia(PersonaDataBaseHome.class,"Password");
-		contSet.agregarDependencia(PersonaDataBaseHome.class,"Host");
-		contSet.agregarDependencia(PersonaDataBaseHome.class,"Puerto");
-		contSet.agregarDependencia(PersonaDataBaseHome.class,"Esquema");
+		contSet.agregarDependencia(PersonaHome.class,"Usuario");
+		contSet.agregarDependencia(PersonaHome.class,"Password");
+		contSet.agregarDependencia(PersonaHome.class,"Host");
+		contSet.agregarDependencia(PersonaHome.class,"Puerto");
+		contSet.agregarDependencia(PersonaHome.class,"Esquema");
 	
-		PersonaDataBaseHome persoDB = (PersonaDataBaseHome) contSet.dameUnObjeto(PersonaDataBaseHome.class);
+		PersonaDataBaseHome persoDB = (PersonaDataBaseHome) contSet.dameUnObjeto(PersonaHome.class);
 		Assert.assertEquals("Fede", persoDB.getUsuario());
 	}
 }
