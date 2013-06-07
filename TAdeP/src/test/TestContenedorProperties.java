@@ -31,13 +31,13 @@ public class TestContenedorProperties {
 	}
 	
 	@Test
-	public void testContenedorSetter() throws Exception {
+	public void testContenedorProperties() throws Exception {
 		PersonaService personaService = (PersonaService) contProperties.dameUnObjeto(PersonaService.class);
 		Assert.assertEquals("Franco", personaService.getPersonaHome().getUsuario());
 	}
 	
 	@Test
-	public void testContenedorSetterTieneUnPersonaDataBaseMock() throws Exception {
+	public void testPersonaServiceTieneUnPersonaDataBaseMock() throws Exception {
 		PersonaService personaService = (PersonaService) contProperties.dameUnObjeto(PersonaService.class);
 		Assert.assertEquals(PersonaDataBaseMock.class, personaService.getPersonaHome().getClass());
 	}

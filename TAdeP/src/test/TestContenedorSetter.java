@@ -37,7 +37,7 @@ public class TestContenedorSetter {
 	}
 	
 	@Test
-	public void testContenedorSetterTieneUnPersonaDataBaseMock() throws Exception {
+	public void testCPersonaServiceTieneUnPersonaDataBaseMock() throws Exception {
 		PersonaService personaService = (PersonaService) contSet.dameUnObjeto(PersonaService.class);
 		Assert.assertEquals(PersonaDataBaseMock.class, personaService.getPersonaHome().getClass());
 	}
