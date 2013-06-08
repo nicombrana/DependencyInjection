@@ -9,6 +9,10 @@ public class PersonaDataBaseHome implements PersonaHome {
 	public int puerto;
 	public String esquema;
 	
+	public PersonaDataBaseHome(){
+		
+	}
+	
 	public PersonaDataBaseHome(String usuario, String password, String host,
 			int puerto, String esquema) {
 		super();
