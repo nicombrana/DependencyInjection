@@ -28,6 +28,14 @@ public class TestContenedorSetter {
 		contSet.agregarDependencia(PersonaHome.class,"Puerto");
 		contSet.agregarDependencia(PersonaHome.class,"Esquema");
 		
+		contSet.configurate(Persona.class, Persona.class);
+		contSet.configurate("".getClass(), "Fede");
+		contSet.configurate(int.class, 25);
+		contSet.agregarDependencia(Persona.class,"".getClass());
+		contSet.agregarDependencia(Persona.class,int.class);
+		
+		
+		
 	}
 	
 	@Test
@@ -63,6 +71,7 @@ public class TestContenedorSetter {
 	
 	@Test
 	public void testPersona() throws Exception {
-		
+		Persona personita = (Persona) contSet.dameUnObjeto(Persona.class);
+		Assert.assertEquals(25, personita.getEdad());
 	}
 }

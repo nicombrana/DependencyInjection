@@ -17,7 +17,7 @@ public class ObjetoHelper extends ContenedorHelper {
 	//Comportamiento
 	public void settea(Class<?> clase, Object objeto) throws Exception{
 		Method metodoAInvocar = null;
-		if (this.getReferencia().equals("")){
+		if (this.getReferencia().equals(this.getTipo().getSimpleName())){
 			for (Method metodo : clase.getMethods()){
 				if ((metodo.getName().contains("set")) && (metodo.getParameterTypes()[0].equals(this.getTipo()))){
 					metodoAInvocar= metodo;

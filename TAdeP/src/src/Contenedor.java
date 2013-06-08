@@ -38,12 +38,18 @@ public abstract class Contenedor  {
 	}
 	
 	public void configurate(Class<?> tipo, Object valor){
-		this.configurate("", tipo, valor);
+		this.configurate(tipo.getSimpleName(), tipo, valor);
 	}
 	
 	public void agregarDependencia(Class<?> tipoInyectable, Class<?> tipoDependencia){
-		this.getDiccionarioClaseHelper().get(tipoInyectable).
-			agregarDependencia(this.getDiccionarioClaseHelper().get(tipoDependencia));
+		if (this.getDiccionarioClaseHelper().containsKey(tipoDependencia)){
+			this.getDiccionarioClaseHelper().get(tipoInyectable).
+				agregarDependencia(this.getDiccionarioClaseHelper().get(tipoDependencia));	
+		} else {
+			this.agregarDependencia(tipoInyectable, tipoDependencia.getSimpleName());
+		}
+
+		
 	}
 	
 	public void agregarDependencia(Class<?> tipoInyectable, String referenciaDependencia){
