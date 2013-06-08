@@ -1,5 +1,7 @@
 package test;
 
+import java.util.ArrayList;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -31,10 +33,10 @@ public class TestContenedorSetter {
 		contSet.configurate(Persona.class, Persona.class);
 		contSet.configurate("".getClass(), "Fede");
 		contSet.configurate(int.class, 25);
-		contSet.agregarDependencia(Persona.class,"".getClass());
-		contSet.agregarDependencia(Persona.class,int.class);
-		
-		
+		ArrayList<Class<?>> listaDependencias =new ArrayList<Class<?>>();
+		listaDependencias.add("".getClass());
+		listaDependencias.add(int.class);
+		contSet.agregarDependencia(Persona.class, listaDependencias);
 		
 	}
 	

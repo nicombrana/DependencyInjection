@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Contenedor  {
@@ -49,7 +50,12 @@ public abstract class Contenedor  {
 			this.agregarDependencia(tipoInyectable, tipoDependencia.getSimpleName());
 		}
 
-		
+	}
+	
+	public void agregarDependencia(Class<?> tipoInyectable, ArrayList<Class<?>> tiposDependencia){
+		for (Class<?> tipo : tiposDependencia){
+			this.agregarDependencia(tipoInyectable, tipo);
+		}
 	}
 	
 	public void agregarDependencia(Class<?> tipoInyectable, String referenciaDependencia){
