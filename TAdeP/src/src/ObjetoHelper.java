@@ -1,5 +1,8 @@
 package src;
 
+import java.lang.reflect.Method;
+
+
 public class ObjetoHelper extends ContenedorHelper {
 
 	private String referencia;
@@ -9,6 +12,23 @@ public class ObjetoHelper extends ContenedorHelper {
 		this.setReferencia(referencia);
 		this.setTipo(tipo);
 		this.setValor(valor);
+	}
+
+	//Comportamiento
+	public void settea(Class<?> clase, Object objeto) throws Exception{
+		Method metodoAInvocar = null;
+		if (this.getReferencia().equals("")){
+			for (Method metodo : clase.getMethods()){
+				if ((metodo.getName().contains("set")) && (metodo.getParameterTypes()[0].equals(this.getTipo()))){
+					metodoAInvocar= metodo;
+				}
+			}
+		} else{
+			metodoAInvocar = clase.getMethod("set"+this.getReferencia(), this.getTipo());
+		}
+		
+		metodoAInvocar.invoke(objeto, this.getValor());
+		
 	}
 
 	//Setters & Getters

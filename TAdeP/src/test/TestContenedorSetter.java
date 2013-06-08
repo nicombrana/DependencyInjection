@@ -1,7 +1,5 @@
 package test;
 
-import java.lang.reflect.Method;
-
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -64,13 +62,7 @@ public class TestContenedorSetter {
 	}
 	
 	@Test
-	public void testASD() throws Exception {
-		Persona nico = new Persona();
-		for (Method metodo : Persona.class.getMethods()){
-			if ((metodo.getName().contains("set")) && (metodo.getParameterTypes()[0].equals(int.class))){
-				metodo.invoke(nico, 2);
-			}
-		}
-		Assert.assertEquals(2, nico.getPuerto());
+	public void testPersona() throws Exception {
+		
 	}
 }

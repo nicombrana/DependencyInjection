@@ -2,59 +2,33 @@ package test;
 
 public class Persona {
 	
-	private String usuario;
-	private String password;
-	private String host;
-	private int puerto;
-	private String esquema;
-	
+	private String nombre;
+	private int edad;
+		
 	public Persona() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Persona(String nombre, String password){
-		this.usuario = nombre;
-		this.password = password;
+	public Persona(String nombre, int edad){
+		this.nombre = nombre;
+		this.edad = edad;
 	}
 
-	//Getters
-	public String getUsuario(){
-		return this.usuario;
+	//Getters & Setters
+	
+	public String getNombre() {
+		return nombre;
 	}
 	
-	public String getPassword(){
-		return this.password;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
-	public String getHost(){
-		return this.host;
+	public int getEdad() {
+		return edad;
 	}
 	
-	public int getPuerto(){
-		return this.puerto;
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
-	
-	public String getEsquema(){
-		return this.esquema;
-	}
-
-	public void setUsuario(String nombre){
-		this.usuario = nombre;
-	}
-	
-	public void setPassword(String password){
-		this.password = password;
-	}
-	
-	public void setHost(String host){
-		this.host = host;
-	}
-	
-	public void setPuerto(int puerto){
-		this.puerto = puerto;
-	}
-	
-	public void setEsquema(String esquema){
-		this.esquema = esquema;
-	}
-}
+}	
