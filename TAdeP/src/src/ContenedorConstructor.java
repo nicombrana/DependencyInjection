@@ -1,38 +1,40 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContenedorConstructor extends Contenedor {
 
-	
-	public Object dameUnObjeto(Class<?> tipo) throws Exception{
-		
-		ClaseHelper inyectableHelper = (ClaseHelper) this.getDiccionarioClaseHelper().get(tipo);
-		Object[] dependencias = new Object[inyectableHelper.getDependencias().size()];
-		Class<?>[] tiposDependencias = new Class<?>[inyectableHelper.getDependencias().size()];
-		
-		for (int i = 0; i < inyectableHelper.getDependencias().size(); i++) {
-			if (this.getDiccionarioClaseHelper().containsValue(inyectableHelper.getDependencias().get(i))){
-				ClaseHelper claseHelperAux = (ClaseHelper) inyectableHelper.getDependencias().get(i);
-				dependencias[i] = this.dameUnObjeto(claseHelperAux.getTipo());
-				tiposDependencias[i] = claseHelperAux.getTipo();
-			} else{
-				ObjetoHelper objetoHelperAux = (ObjetoHelper) inyectableHelper.getDependencias().get(i);
-				dependencias[i] = objetoHelperAux.getValor();
-				tiposDependencias[i] = objetoHelperAux.getTipo();
-			}		
+	public Object dameUnObjeto(Class<?> tipo) throws Exception {
+
+		ClaseHelper inyectableHelper = (ClaseHelper) this
+				.getDiccionarioClaseHelper().get(tipo);
+		List<Object> dependencias = new ArrayList<Object>();
+		List<Class<?>> tiposDependencias = new ArrayList<Class<?>>();
+
+		for (Componente componente : inyectableHelper.getDependencias()) {
+			dependencias.add(componente.getValor(this));
+			tiposDependencias.add(componente.getTipo());
 		}
-		
-		return inyectableHelper.getClase().getConstructor(tiposDependencias).newInstance(dependencias);
-//		return constructor.newInstance(dependencias);
-	
+
+		return inyectableHelper.getClase()
+				.getConstructor(toArray(tiposDependencias))
+				.newInstance(dependencias);
+		// return constructor.newInstance(dependencias);
+
 	}
-	
-//	public Object seteaGenerico(Class<?> claseInyectable, ClaseHelper claseHelper) throws Exception {
-//		return this.dameUnObjeto(claseHelper.getTipo());
-//	}
-//	
-//	public Object seteaGenerico(Class<?> claseInyectable, ObjetoHelper objetoHelper) throws Exception {
-//		return objetoHelper.getValor();
-//	}
-	
+
+	// public Object seteaGenerico(Class<?> claseInyectable, ClaseHelper
+	// claseHelper) throws Exception {
+	// return this.dameUnObjeto(claseHelper.getTipo());
+	// }
+	//
+	// public Object seteaGenerico(Class<?> claseInyectable, ObjetoHelper
+	// objetoHelper) throws Exception {
+	// return objetoHelper.getValor();
+	// }
+	private Class[] toArray(List<Class<?>> tiposDependencias) {
+		return (Class[]) tiposDependencias.toArray(new Class[tiposDependencias
+				.size()]);
+	}
 }

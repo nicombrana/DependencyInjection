@@ -4,10 +4,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 
-public class ClaseHelper extends ContenedorHelper {
+public class ClaseHelper extends Componente {
 
 	private Class<?> clase;
-	private ArrayList<ContenedorHelper> dependencias = new ArrayList<ContenedorHelper>();
+	private ArrayList<Componente> dependencias = new ArrayList<Componente>();
 	private Contenedor contenedor;
 	
 	public Contenedor getContenedor() {
@@ -43,7 +43,7 @@ public class ClaseHelper extends ContenedorHelper {
 		this.clase = clase;
 	}
 	
-	public void setDependencias(ContenedorHelper objeto){
+	public void setDependencias(Componente objeto){
 		this.dependencias.add(objeto);
 	}
 	
@@ -55,7 +55,7 @@ public class ClaseHelper extends ContenedorHelper {
 		return this.clase;
 	}
 	
-	public ArrayList<ContenedorHelper> getDependencias(){
+	public ArrayList<Componente> getDependencias(){
 		return this.dependencias;
 	}
 	
@@ -66,5 +66,10 @@ public class ClaseHelper extends ContenedorHelper {
 	
 	public void agregarDependencia(ObjetoHelper dependencia){
 		this.getDependencias().add(dependencia);
+	}
+	
+	@Override
+	public Object getValor(ContenedorConstructor contenedorConstructor) throws Exception {
+		return contenedorConstructor.dameUnObjeto(getTipo());
 	}
 }
