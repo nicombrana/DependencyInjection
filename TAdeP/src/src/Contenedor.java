@@ -49,7 +49,6 @@ public abstract class Contenedor  {
 		} else {
 			this.agregarDependencia(tipoInyectable, tipoDependencia.getSimpleName());
 		}
-
 	}
 	
 	public void agregarDependencia(Class<?> tipoInyectable, ArrayList<Class<?>> tiposDependencia){

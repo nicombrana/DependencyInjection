@@ -3,7 +3,7 @@ package src;
 import java.lang.reflect.Method;
 
 
-public class ObjetoHelper extends ContenedorHelper {
+public class ObjetoHelper extends Componente {
 
 	private String referencia;
 	private Object valor;
@@ -29,6 +29,11 @@ public class ObjetoHelper extends ContenedorHelper {
 		
 		metodoAInvocar.invoke(objeto, this.getValor());
 		
+	}
+	
+	@Override
+	public Object getValor(ContenedorConstructor contenedorConstructor) {
+		return referencia;
 	}
 
 	//Setters & Getters

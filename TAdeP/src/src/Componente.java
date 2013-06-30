@@ -1,6 +1,6 @@
 package src;
 
-public abstract class ContenedorHelper {
+public abstract class Componente { //Helper??
 
 	public Class<?> tipo;
 	
@@ -11,5 +11,7 @@ public abstract class ContenedorHelper {
 	public Class<?> getTipo(){
 		return this.tipo;
 	}
+
+	public abstract Object getValor(ContenedorConstructor contenedorConstructor) throws Exception;
 
 }
