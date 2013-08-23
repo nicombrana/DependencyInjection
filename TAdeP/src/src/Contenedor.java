@@ -1,10 +1,11 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Contenedor {
 
-	private HashMap<Class<?>, ContenedorHelper> diccionarioHelper = new HashMap<Class<?>, ContenedorHelper>();
+	private ArrayList<ContenedorHelper> diccionarioHelper = new ArrayList<ContenedorHelper>();
 	private Estrategia estrategia;
 
 	public Object dameUnObjeto(Class<?> tipo) throws Exception {
@@ -14,12 +15,11 @@ public class Contenedor {
 	}
 
 	public void configurate(Class<?> tipo, Class<?> clase) {
-		this.getDiccionarioHelper().put(tipo, new ClaseHelper(tipo, clase));
+		this.getDiccionarioHelper().add(new ClaseHelper(tipo, clase));
 	}
 
 	public void configurate(String referencia, Class<?> tipo, Object valor) {
-		this.getDiccionarioHelper().put(tipo,
-				new ObjetoHelper(referencia, tipo, valor));
+		this.getDiccionarioHelper().add(new ObjetoHelper(referencia, tipo, valor));
 	}
 
 	public void configurate(Class<?> tipo, Object valor) {
@@ -49,23 +49,29 @@ public class Contenedor {
 	}
 	
 	private ContenedorHelper buscarPorReferencia(String referencia) throws Exception{
-		for (ContenedorHelper helper: this.getDiccionarioHelper().values()) {
-			System.out.println(helper.getReferencia());
-			if (helper.getReferencia().contains(referencia)) {
+		for (ContenedorHelper helper: this.getDiccionarioHelper()) {
+			if (helper.getReferencia().equalsIgnoreCase(referencia)) {
 				return helper;
 			}
 		}
 		
-		throw new Exception("No se encontro la referencia.");
+		throw new Exception("No se encontro la referencia: " + referencia);
+	}
+	
+	private ContenedorHelper buscarHelper(String referencia) throws Exception{
+		for (ContenedorHelper helper: this.getDiccionarioHelper()) {
+			
+		}
+		
 	}
 
 	// Getters & Setters
-	public HashMap<Class<?>, ContenedorHelper> getDiccionarioHelper() {
+	public ArrayList<ContenedorHelper> getDiccionarioHelper() {
 		return diccionarioHelper;
 	}
 
 	public void setDiccionarioHelper(
-			HashMap<Class<?>, ContenedorHelper> diccionarioHelper) {
+			ArrayList<ContenedorHelper> diccionarioHelper) {
 		this.diccionarioHelper = diccionarioHelper;
 	}
 

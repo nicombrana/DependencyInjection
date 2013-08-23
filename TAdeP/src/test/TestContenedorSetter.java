@@ -27,7 +27,7 @@ public class TestContenedorSetter {
 		contenedor.agregarDependencia(PersonaService.class,PersonaHome.class);
 //		contenedor.agregarDependencia(PersonaHome.class,"Usuario");
 //		contenedor.agregarDependencia(PersonaHome.class,"Password");
-		contenedor.agregarDependencia(PersonaHome.class,"Host");
+//		contenedor.agregarDependencia(PersonaHome.class,"Host");
 //		contenedor.agregarDependencia(PersonaHome.class,"Puerto");
 		contenedor.agregarDependencia(PersonaHome.class,"Esquema");
 //		
@@ -48,12 +48,12 @@ public class TestContenedorSetter {
 		Assert.assertEquals("Franco", personita.getPersonaHome().getUsuario());
 	}
 	
-	@Test
-	public void testCPersonaServiceTieneUnPersonaDataBaseHome() throws Exception {
-		PersonaService personaService = (PersonaService) contenedor.dameUnObjeto(PersonaService.class);
-		Assert.assertEquals(PersonaDataBaseHome.class, personaService.getPersonaHome().getClass());
-	}
-	
+//	@Test
+//	public void testCPersonaServiceTieneUnPersonaDataBaseHome() throws Exception {
+//		PersonaService personaService = (PersonaService) contenedor.dameUnObjeto(PersonaService.class);
+//		Assert.assertEquals(PersonaDataBaseHome.class, personaService.getPersonaHome().getClass());
+//	}
+//	
 //	@Test
 //	public void testContenedorObjetos() throws Exception {
 //		contenedor = new PorSetter();
@@ -72,10 +72,10 @@ public class TestContenedorSetter {
 //		PersonaDataBaseHome persoDB = (PersonaDataBaseHome) contenedor.dameUnObjeto(PersonaHome.class);
 //		Assert.assertEquals("Fede", persoDB.getUsuario());
 //	}
-	
-	@Test
-	public void testPersona() throws Exception {
-		Persona personita = (Persona) contenedor.dameUnObjeto(Persona.class);
-		Assert.assertEquals(25, personita.getEdad());
-	}
+//	
+//	@Test
+//	public void testPersona() throws Exception {
+//		Persona personita = (Persona) contenedor.dameUnObjeto(Persona.class);
+//		Assert.assertEquals(25, personita.getEdad());
+//	}
 }
