@@ -1,70 +1,53 @@
 package src;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-
 
 public class ClaseHelper extends ContenedorHelper {
 
 	private Class<?> clase;
 	private ArrayList<ContenedorHelper> dependencias = new ArrayList<ContenedorHelper>();
-	private Contenedor contenedor;
-	
-	public Contenedor getContenedor() {
-		return contenedor;
-	}
 
-	public void setContenedor(Contenedor contenedor) {
-		this.contenedor = contenedor;
-	}
 
-	public ClaseHelper(Class<?> tipo, Class<?> clase,Contenedor cont) {
+
+	public ClaseHelper(Class<?> tipo, Class<?> clase) {
 		this.setTipo(tipo);
 		this.setClase(clase);
-		this.setContenedor(cont);
-	}
-	
-	//Comportamiento
-	public void settea(Class<?> clase, Object objeto) throws Exception{
-		Object objetoDependencia = this.getContenedor().dameUnObjeto(this.getTipo());
-		for (Method metodo : clase.getMethods()){
-			if ((metodo.getName().contains("set")) && (metodo.getParameterTypes()[0].equals(this.getTipo()))){
-				metodo.invoke(objeto, objetoDependencia);
-			}
-		}
 	}
 
-	//Setters & Getters
-	public void setTipo(Class<?> tipo){
+	// Comportamiento
+	public Object dameUnObjetoUsando(Estrategia estrategia) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, Exception {
+		return estrategia.genera(this);
+	}
+	
+
+	public void agregarDependencia(ContenedorHelper dependencia) {
+		this.getDependencias().add(dependencia);
+	}
+
+	// Setters & Getters
+	public void setTipo(Class<?> tipo) {
 		this.tipo = tipo;
 	}
-	
-	public void setClase(Class<?> clase){
+
+	public void setClase(Class<?> clase) {
 		this.clase = clase;
 	}
-	
-	public void setDependencias(ContenedorHelper objeto){
+
+	public void setDependencias(ContenedorHelper objeto) {
 		this.dependencias.add(objeto);
 	}
-	
-	public Class<?> getTipo(){
+
+	public Class<?> getTipo() {
 		return this.tipo;
 	}
-	
-	public Class<?> getClase(){
+
+	public Class<?> getClase() {
 		return this.clase;
 	}
-	
-	public ArrayList<ContenedorHelper> getDependencias(){
+
+	public ArrayList<ContenedorHelper> getDependencias() {
 		return this.dependencias;
 	}
-	
-	//Comportamiento
-	public void agregarDependencia(ClaseHelper dependencia){
-		this.getDependencias().add(dependencia);
-	}
-	
-	public void agregarDependencia(ObjetoHelper dependencia){
-		this.getDependencias().add(dependencia);
-	}
+
 }

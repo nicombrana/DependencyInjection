@@ -5,15 +5,15 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import src.ContenedorConstructor;
+import src.PorConstructor;
 
 public class TestContenedorConstructor {
 	
-	private ContenedorConstructor contConstructor;
+	private PorConstructor contConstructor;
 	
 	@Before
 	public void setUp() throws Exception {
-		contConstructor = new ContenedorConstructor();
+		contConstructor = new PorConstructor();
 		contConstructor.configurate(PersonaHome.class, PersonaDataBaseHome.class);
 		contConstructor.configurate(PersonaService.class, PersonaService.class);
 		contConstructor.configurate("Usuario","".getClass(),"Franco");
@@ -43,7 +43,7 @@ public class TestContenedorConstructor {
 	
 	@Test
 	public void testContenedorObjetos() throws Exception {
-		contConstructor = new ContenedorConstructor();
+		contConstructor = new PorConstructor();
 		contConstructor.configurate(PersonaHome.class, PersonaDataBaseHome.class);
 		contConstructor.configurate("Usuario","".getClass(),"Fede");
 		contConstructor.configurate("Password","".getClass(),"AguanteEsteGrupo");
