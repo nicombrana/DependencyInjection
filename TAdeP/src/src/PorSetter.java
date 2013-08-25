@@ -11,20 +11,19 @@ public class PorSetter implements Estrategia {
 		Object objetoInyectable = helper.getClase().newInstance();
 
 		for (ContenedorHelper dependenciaHelper : helper.getDependencias()) {
-			this.buscarMetodo(helper.getClase(), dependenciaHelper.getTipo()).invoke(
+			this.buscarMetodo(helper.getClase(), dependenciaHelper.crearBusquedaDeMetodo()).invoke(
 					objetoInyectable, dependenciaHelper.dameUnObjetoUsando(this));
 		}
 
 		return objetoInyectable;
 	}
 
-	private Method buscarMetodo(Class<?> clase, Class<?> tipo) throws Exception {
+	private Method buscarMetodo(Class<?> clase, Busqueda busqueda) throws Exception {
 		for (Method metodo : clase.getMethods()) {
-			if ((metodo.getName().contains("set"))
-					&& (metodo.getParameterTypes()[0].equals(tipo))) {
+			if (busqueda.buscasA(metodo)) {
 				return metodo;
 			}
 		}
-		throw new Exception("No se encontro el metodo.");
+		throw new Exception("No se encontro el metodo para la Dependencia: " + busqueda.toString());
 	}
 }

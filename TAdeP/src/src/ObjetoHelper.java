@@ -1,7 +1,5 @@
 package src;
 
-import java.lang.reflect.Method;
-
 public class ObjetoHelper extends ContenedorHelper {
 
 	private Object valor;
@@ -15,28 +13,28 @@ public class ObjetoHelper extends ContenedorHelper {
 	// Comportamiento
 	@Override
 	public Object dameUnObjetoUsando(Estrategia estrategia) {
-		return tipo.cast(valor);
+		return this.getTipo().cast(this.getValor());
 	}
 
-	@Override
-	public void settea(Class<?> clase, Object objeto) throws Exception {
-		Method metodoAInvocar = null;
-		if (this.getReferencia().equals(this.getTipo().getSimpleName())) {
-			for (Method metodo : clase.getMethods()) {
-				if ((metodo.getName().contains("set"))
-						&& (metodo.getParameterTypes()[0]
-								.equals(this.getTipo()))) {
-					metodoAInvocar = metodo;
-				}
-			}
-		} else {
-			metodoAInvocar = clase.getMethod("set" + this.getReferencia(),
-					this.getTipo());
-		}
-
-		metodoAInvocar.invoke(objeto, this.getValor());
-
-	}
+//	@Override
+//	public void settea(Class<?> clase, Object objeto) throws Exception {
+//		Method metodoAInvocar = null;
+//		if (this.getReferencia().equals(this.getTipo().getSimpleName())) {
+//			for (Method metodo : clase.getMethods()) {
+//				if ((metodo.getName().contains("set"))
+//						&& (metodo.getParameterTypes()[0]
+//								.equals(this.getTipo()))) {
+//					metodoAInvocar = metodo;
+//				}
+//			}
+//		} else {
+//			metodoAInvocar = clase.getMethod("set" + this.getReferencia(),
+//					this.getTipo());
+//		}
+//
+//		metodoAInvocar.invoke(objeto, this.getValor());
+//
+//	}
 
 	// Setters & Getters
 
@@ -47,9 +45,5 @@ public class ObjetoHelper extends ContenedorHelper {
 	public void setValor(Object valor) {
 		this.valor = valor;
 	}
-	
-	@Override
-	public String getReferencia() {
-		return referencia;
-	}
+
 }

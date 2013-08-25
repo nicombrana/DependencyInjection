@@ -16,30 +16,24 @@ public class ClaseHelper extends ContenedorHelper {
 	}
 
 	// Comportamiento
+	@Override
 	public Object dameUnObjetoUsando(Estrategia estrategia) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, Exception {
 		return estrategia.genera(this);
 	}
 	
 
+	@Override
 	public void agregarDependencia(ContenedorHelper dependencia) {
 		this.getDependencias().add(dependencia);
 	}
 
 	// Setters & Getters
-	public void setTipo(Class<?> tipo) {
-		this.tipo = tipo;
-	}
-
 	public void setClase(Class<?> clase) {
 		this.clase = clase;
 	}
 
 	public void setDependencias(ContenedorHelper objeto) {
 		this.dependencias.add(objeto);
-	}
-
-	public Class<?> getTipo() {
-		return this.tipo;
 	}
 
 	public Class<?> getClase() {

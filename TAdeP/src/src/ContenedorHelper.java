@@ -5,10 +5,10 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class ContenedorHelper {
 
 	public Class<?> tipo;
-	public String referencia;
+	public String referencia = " ";
 
 	public String getReferencia() {
-		return " ";
+		return referencia;
 	}
 
 	public void setReferencia(String referencia) {
@@ -32,6 +32,14 @@ public abstract class ContenedorHelper {
 	}
 	
 	public Object dameUnObjetoUsando(Estrategia estrategia) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, Exception{
-		return 0;
+		return null;
+	}
+	
+	public Busqueda crearBusquedaDeMetodo(){
+		if (this.getReferencia().equalsIgnoreCase(" ")) {
+			return new BusquedaMetodoPorTipo(this);
+		}
+		
+		return new BusquedaMetodoPorReferencia(this);
 	}
 }

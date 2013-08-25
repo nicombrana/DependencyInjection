@@ -3,13 +3,13 @@ package test;
 public class Persona {
 	
 	private String nombre;
-	private int edad;
+	private Integer edad;
 		
 	public Persona() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Persona(String nombre, int edad){
+	public Persona(String nombre, Integer edad){
 		this.nombre = nombre;
 		this.edad = edad;
 	}
@@ -24,11 +24,11 @@ public class Persona {
 		this.nombre = nombre;
 	}
 	
-	public int getEdad() {
+	public Integer getEdad() {
 		return edad;
 	}
 	
-	public void setEdad(int edad) {
+	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
 }	
