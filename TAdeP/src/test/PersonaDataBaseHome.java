@@ -6,7 +6,7 @@ public class PersonaDataBaseHome implements PersonaHome {
 	public String usuario;
 	public String password;
 	public String host;
-	public int puerto;
+	public Integer puerto;
 	public String esquema;
 	
 	public PersonaDataBaseHome(){
@@ -14,7 +14,7 @@ public class PersonaDataBaseHome implements PersonaHome {
 	}
 	
 	public PersonaDataBaseHome(String usuario, String password, String host,
-			int puerto, String esquema) {
+			Integer puerto, String esquema) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
@@ -40,11 +40,11 @@ public class PersonaDataBaseHome implements PersonaHome {
 		this.host = host;
 	}
 
-	public int getPuerto() {
+	public Integer getPuerto() {
 		return puerto;
 	}
 
-	public void setPuerto(int puerto) {
+	public void setPuerto(Integer puerto) {
 		this.puerto = puerto;
 	}
 
@@ -63,5 +63,6 @@ public class PersonaDataBaseHome implements PersonaHome {
 	public String getUsuario() {
 		return usuario;
 	}
+
 
 }

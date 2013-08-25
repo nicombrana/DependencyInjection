@@ -7,11 +7,11 @@ public class PorSetter implements Estrategia {
 
 
 	@Override
-	public Object genera(ClaseHelper helper) throws IllegalArgumentException, InvocationTargetException, Exception {
-		Object objetoInyectable = helper.getClase().newInstance();
+	public Object genera(ClaseHelper inyectableHelper) throws IllegalArgumentException, InvocationTargetException, Exception {
+		Object objetoInyectable = inyectableHelper.getClase().newInstance();
 
-		for (ContenedorHelper dependenciaHelper : helper.getDependencias()) {
-			this.buscarMetodo(helper.getClase(), dependenciaHelper.crearBusquedaDeMetodo()).invoke(
+		for (ContenedorHelper dependenciaHelper : inyectableHelper.getDependencias()) {
+			this.buscarMetodo(inyectableHelper.getClase(), dependenciaHelper.crearBusquedaDeMetodo()).invoke(
 					objetoInyectable, dependenciaHelper.dameUnObjetoUsando(this));
 		}
 

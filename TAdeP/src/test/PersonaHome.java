@@ -8,7 +8,7 @@ public interface PersonaHome {
 	
 	public String getHost();
 	
-	public int getPuerto();
+	public Integer getPuerto();
 	
 	public String getEsquema();
 
@@ -18,7 +18,7 @@ public interface PersonaHome {
 	
 	public void setHost(String host);
 	
-	public void setPuerto(int puerto);
+	public void setPuerto(Integer puerto);
 	
 	public void setEsquema(String esquema);
 }
