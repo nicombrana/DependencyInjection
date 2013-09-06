@@ -35,11 +35,21 @@ public abstract class ContenedorHelper {
 		return null;
 	}
 	
-	public Busqueda crearBusquedaDeMetodo(){
-		if (this.getReferencia().equalsIgnoreCase(" ")) {
-			return new BusquedaMetodoPorTipo(this);
-		}
-		
-		return new BusquedaMetodoPorReferencia(this);
+//	public Busqueda crearBusquedaDeMetodo(){
+//		if (this.getReferencia().equalsIgnoreCase(" ")) {
+//			return new BusquedaMetodoPorTipo(this);
+//		}
+//		
+//		return new BusquedaMetodoPorReferencia(this);
+//	}
+	
+	public boolean sos(Class<?> tipo){
+		return this.getTipo().equals(tipo);
 	}
+	
+	public boolean sos(String referencia){
+		return this.getReferencia().equals(referencia);
+	}
+	
+	
 }

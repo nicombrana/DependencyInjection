@@ -8,8 +8,12 @@ public class Contenedor {
 	private Estrategia estrategia;
 
 	public Object dameUnObjeto(Class<?> tipo) throws Exception {
-		return this.buscar(new BusquedaHelperPorTipo(tipo)).dameUnObjetoUsando(
+		return new BusquedaHelper(tipo).dameUnObjetoDesde(this.helpersAsVector()).dameUnObjetoUsando(
 				this.getEstrategia());
+	}
+
+	private ContenedorHelper[] helpersAsVector() {
+		return helpers.toArray( new ContenedorHelper[helpers.size()]);
 	}
 
 	public void configurate(Class<?> tipo, Class<?> clase) {
@@ -26,8 +30,8 @@ public class Contenedor {
 
 	public void agregarDependencia(Class<?> tipoInyectable,
 			Class<?> tipoDependencia) throws Exception {
-		this.buscar(new BusquedaHelperPorTipo(tipoInyectable))
-				.agregarDependencia(this.buscar(new BusquedaHelperPorTipo(tipoDependencia)));
+		new BusquedaHelper(tipoInyectable).dameUnObjetoDesde(this.helpersAsVector())
+				.agregarDependencia(new BusquedaHelper(tipoDependencia).dameUnObjetoDesde(this.helpersAsVector()));
 	}
 
 	public void agregarDependencia(Class<?> tipoInyectable,
@@ -36,25 +40,14 @@ public class Contenedor {
 			this.agregarDependencia(tipoInyectable, tipo);
 		}
 	}
-
+	
 	public void agregarDependencia(Class<?> tipoInyectable,
 			String referenciaDependencia) throws Exception {
-		this.buscar(new BusquedaHelperPorTipo(tipoInyectable))
+		new BusquedaHelper(tipoInyectable).dameUnObjetoDesde(this.helpersAsVector())
 				.agregarDependencia(
-						this.buscar(new BusquedaHelperPorReferencia(referenciaDependencia)));
+						new BusquedaHelper(referenciaDependencia).dameUnObjetoDesde(this.helpersAsVector()));
 	}
 
-	private ContenedorHelper buscar(Busqueda busqueda) throws Exception {
-		for (ContenedorHelper helper : this.getHelpers()) {
-			if (busqueda.buscasA(helper)) {
-				return helper;
-			}
-		}
-
-		throw new Exception("No se encontro referencia para: "
-				+ busqueda.getValor());
-	}
-	
 
 	// Getters & Setters
 	public ArrayList<ContenedorHelper> getHelpers() {
