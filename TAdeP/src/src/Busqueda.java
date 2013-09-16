@@ -5,7 +5,7 @@ public abstract class Busqueda<T> {
 	public Class<?> tipo;
 	public String valor;
 
-//	Siempre que busque un Objeto: primero busca lguna referencia y luego, si no lo encontro, por el tipo
+//	Siempre que busque un Objeto: primero busca alguna referencia y luego, si no lo encontro, por el tipo
 	public T dameUnObjetoDesde(T[] collecion) throws Exception {
 		for (T elemento : collecion) {
 			if (this.buscasPorReferencia(elemento)) {

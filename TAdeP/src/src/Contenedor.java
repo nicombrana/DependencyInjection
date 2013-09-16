@@ -34,12 +34,14 @@ public class Contenedor {
 				.agregarDependencia(new BusquedaHelper(tipoDependencia).dameUnObjetoDesde(this.helpersAsVector()));
 	}
 
-	public void agregarDependencia(Class<?> tipoInyectable,
-			ArrayList<Class<?>> tiposDependencia) throws Exception {
-		for (Class<?> tipo : tiposDependencia) {
+	
+	public <T extends Class<?> /*No me deja agregar & String :(*/ > void agregarDependencia(Class<?> tipoInyectable,
+			ArrayList<T> tiposDependencia) throws Exception {
+		for (T tipo : tiposDependencia) {
 			this.agregarDependencia(tipoInyectable, tipo);
 		}
 	}
+
 	
 	public void agregarDependencia(Class<?> tipoInyectable,
 			String referenciaDependencia) throws Exception {
@@ -48,6 +50,18 @@ public class Contenedor {
 						new BusquedaHelper(referenciaDependencia).dameUnObjetoDesde(this.helpersAsVector()));
 	}
 
+	public void agregarDependenciaConValor(Class<?> tipoInyectable,
+			String valor) throws Exception {
+		this.configurate(String.class, valor);
+		this.agregarDependencia(tipoInyectable, String.class);
+	}
+	
+	public void agregarDependenciaConValor(Class<?> tipoInyectable,
+			int valor) throws Exception {
+		this.configurate(Integer.class, valor);
+		this.agregarDependencia(tipoInyectable, Integer.class);
+	}
+	
 
 	// Getters & Setters
 	public ArrayList<ContenedorHelper> getHelpers() {

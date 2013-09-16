@@ -36,7 +36,7 @@ public class TestContenedor {
 		contenedor.agregarDependencia(PersonaHome.class, "Esquema");
 	}
 
-	private void configurarPersona() throws Exception {
+	private void configurarPersonaFede() throws Exception {
 		contenedor.configurate(Persona.class, Persona.class);
 		contenedor.configurate(String.class, "Fede");
 		contenedor.configurate(Integer.class, 25);
@@ -44,6 +44,12 @@ public class TestContenedor {
 		listaDependencias.add(String.class);
 		listaDependencias.add(Integer.class);
 		contenedor.agregarDependencia(Persona.class, listaDependencias);
+	}
+	
+	private void configurarPersonaFranco() throws Exception {
+		contenedor.configurate(Persona.class, Persona.class);
+		contenedor.agregarDependenciaConValor(Persona.class, "Franco");
+		contenedor.agregarDependenciaConValor(Persona.class, 28);
 	}
 	
 	@Test
@@ -67,7 +73,7 @@ public class TestContenedor {
 	@Test
 	public void testPersonaPorSetter() throws Exception {
 		contenedor.setEstrategia(new PorSetter());
-		configurarPersona();
+		configurarPersonaFede();
 		Persona personita = (Persona) contenedor.dameUnObjeto(Persona.class);
 		Assert.assertEquals("Fede", personita.getNombre());
 	}
@@ -75,9 +81,9 @@ public class TestContenedor {
 	@Test
 	public void testPersonaPorConstructor() throws Exception {
 		contenedor.setEstrategia(new PorConstructor());
-		configurarPersona();
+		configurarPersonaFranco();
 		Persona personita = (Persona) contenedor.dameUnObjeto(Persona.class);
-		Assert.assertEquals("Fede", personita.getNombre());
+		Assert.assertEquals("Franco", personita.getNombre());
 	}
 
 }
