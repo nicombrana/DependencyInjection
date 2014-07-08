@@ -40,6 +40,8 @@ public class ClaseHelper extends ContenedorHelper {
 		return this.clase;
 	}
 
+	//FIXME nuevamente, no usen tipos tan concretos como ArrayList. 
+	//Usen List, Collection, Iterable, etc, según lo que necesiten
 	public ArrayList<ContenedorHelper> getDependencias() {
 		return this.dependencias;
 	}

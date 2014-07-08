@@ -5,6 +5,14 @@ public class Persona {
 	private String nombre;
 	private Integer edad;
 		
+	private String foo;
+	public String getFoo() {
+      return foo;
+    }
+	public void setFoo(String foo) {
+      this.foo = foo;
+    }
+	
 	public Persona() {
 		// TODO Auto-generated constructor stub
 	}

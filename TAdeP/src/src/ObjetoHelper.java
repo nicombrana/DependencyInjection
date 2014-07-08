@@ -16,6 +16,8 @@ public class ObjetoHelper extends ContenedorHelper {
 		return this.getTipo().cast(this.getValor());
 	}
 
+	//FIXME no dejen código comentado :D 
+	//Para llevar la historia, ya está el git 
 //	@Override
 //	public void settea(Class<?> clase, Object objeto) throws Exception {
 //		Method metodoAInvocar = null;
